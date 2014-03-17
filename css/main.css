@@ -97,25 +97,28 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-.bs{
-position: relative;
-padding: 30px 15px;
-color: #cdbfe3;
-text-align: center;
-text-shadow: 0 1px 0 rgba(0,0,0,.1);
-background-color: #6f5499;
-background-image: -webkit-linear-gradient(top,#563d7c 0,#6f5499 100%);
-background-image: linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
-background-repeat: repeat-x;
+.toolbar {
+    background-color: #c6c6c6;
+    height: 50px;
+    padding: 5px;
 }
 
+.toolbar-item{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+}
 
-.bs h1{
+.active {
 
-color: #fff;
+    background-color: yellow;
 
 }
 
+.disabled{
+    background-color: gray;
+}
 
 
 
