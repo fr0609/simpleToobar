@@ -7,46 +7,92 @@ var oojs = (function (oojs) {
 
      	[].forEach.call(itemElements, function (el,index,array){
 
-     		var item = {
-     			el :  el,
+     	    var item = {
+     	    	toggleActiveState: function () {
+
+     	    		 this.activated = !this.active;
+     	    	}
+
+     	    };
+
+     	    Object.defineProperties(item, {
+     	    	el : {
+     	    		value: el
+     	    	},
+
+     	    	enabled: {
+     	    		get : function (){
+
+     	    			return !this.el.classList.contains("disabled");
+     	    		},
+
+     	    		set: function (value){
+
+     	    			if (value) {
+     	    				this.el.classList.remove("disabled");
+     	    			} else {
+     	    				this.el.classList.add("disabled");
+     	    			}
+     	    			}
+     	    		},
+
+      	    	activated: {
+     	    		get : function (){
+
+     	    			return this.el.classList.contains("active");
+     	    		},
+
+     	    		set: function (value){
+
+     	    			if (value) {
+     	    				this.el.classList.add("active");
+     	    			} else {
+     	    				this.el.classList.remove("active");
+     	    			}
+     	    		} 
+     	    	}
+
+     	    });
+     		// var item = {
+     		// 	el :  el,
      			
-     			disable : function () {
-     				this.el.classList.add("disabled");
-     			},
-     			enable : function () {
-     				this.el.classList.add("active");
-     			},
-     			isDisabled : function () {
-     				return this.el.classList.contains("disabled");
+     		// 	disable : function () {
+     		// 		this.el.classList.add("disabled");
+     		// 	},
+     		// 	enable : function () {
+     		// 		this.el.classList.add("active");
+     		// 	},
+     		// 	isDisabled : function () {
+     		// 		return this.el.classList.contains("disabled");
 
-     			},
-     			activate: function () {
-     				if (this.isDisabled()) {
-     					return;
-     				} 
-     				return this.el.classList.add("active");
-     			},
-     			deactivate: function () {
-     				if (this.isDisabled()) {
-     					return;
-     				} 
-     				return this.el.classList.remove("active");
-     			},
-     			isActive : function () {
-     				return this.el.classList.contains("active");
+     		// 	},
+     		// 	activate: function () {
+     		// 		if (this.isDisabled()) {
+     		// 			return;
+     		// 		} 
+     		// 		return this.el.classList.add("active");
+     		// 	},
+     		// 	deactivate: function () {
+     		// 		if (this.isDisabled()) {
+     		// 			return;
+     		// 		} 
+     		// 		return this.el.classList.remove("active");
+     		// 	},
+     		// 	isActive : function () {
+     		// 		return this.el.classList.contains("active");
 
-     			},
+     		// 	},
 
-     			toogleActiveState: function () {
+     		// 	toogleActiveState: function () {
 
-     				if (this.isActive){
-     					this.deactivate();
-     				} else {
-     					this.active();
-     				}
+     		// 		if (this.isActive){
+     		// 			this.deactivate();
+     		// 		} else {
+     		// 			this.active();
+     		// 		}
 
-     			}
-     		};
+     		// 	}
+     		// };
 
      		items.push(item);
 
